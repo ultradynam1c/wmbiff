@@ -1,7 +1,7 @@
 # Maintainer: Brian Bidulock <bidulock@openss7.org>
 pkgname=wmbiff
 pkgver=0.4.29
-arch=('i686' 'x86_64')
+arch=('i686' 'x86_64' 'aarch64')
 pkgrel=1
 pkgdesc="WindowMaker dock app that displays the number of read and unread messages in up to five mailboxes."
 url="http://www.dockapps.net/wmbiff"
@@ -18,7 +18,7 @@ prepare() {
 
 build() {
   cd ${pkgname}-${pkgver}
-  ./configure --prefix=/usr --mandir=/usr/share/man
+  CFLAGS="-fcommon" bash ./configure --prefix=/usr --mandir=/usr/share/man
   make
 }
 
